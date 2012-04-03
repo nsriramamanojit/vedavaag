@@ -1,0 +1,17 @@
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= simple_form_for(@user, :validate => true) do |f| %>
+      <fieldset>
+        <%= f.input :login,:label=>"Login Name",:placeholder=>"Desired Login Name" %>
+        <%= f.input :name, :label=>"Full Name", :placeholder=>"Full Name" %>
+        <%= f.input :email, :label=>"Email",:placeholder=>"user@example.com"%>
+        <%= f.input :mobile_number, :label=>"Mobile", :placeholder=>"Mobile Number Must be 10 Digits" %>
+        <%= f.input :phone_number, :label=>"Land Phone",:placeholder=>"Phone Number" %>
+        <%= f.association :roles,:label_method => lambda { |role| "#{role.name.titleize} " } %>
+        <%= f.submit 'Save', :disable_with=>'Please wait...' %>
+      </fieldset>
+  <% end %>
+</div>

@@ -1,0 +1,133 @@
+body {
+	margin: 0;
+	padding: 0;
+	/*background-color: #f2f2f2;*/
+	background-color: #ffffff;
+	font-family: Tahoma,verdana,helvetica,sans-serif;
+	font-size: 12px;
+	color: #292929;
+	font-weight: normal;
+}
+.tabless {
+    margin: auto;
+    width: 480px;
+}
+
+.standalone {
+    /*background: #f5f5f5;*/
+    background: #ffffff;
+    border: 5px #b0c4de solid;
+    margin: 75px auto 6px auto;
+    padding: 20px;
+    width: 400px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.standalone input[type =
+"text"], .standalone input[type = "password"] {
+    font-size: 16px;
+    padding: 2px;
+    width: 355px;
+}
+
+.standalone input[type =
+"submit"] {
+    font-size: 2em;
+}
+
+.title {
+    border-bottom: 1px #808080 solid;
+    color: #342d7e;
+    font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 2px;
+}
+
+.label {
+    color: #3f3f3f;
+    font-size: 12px;
+    margin: 8px 0px 0px 0px;
+}
+.section {
+    /*background: #f5f5f5;*/
+    background: #ffffff;
+    color: #3f3f3f;
+    margin: 0px 0px 2px 0px;
+    padding: 4px 15px 8px 15px;
+}
+/*START      FLASH AND ERROR MESSAGES */
+#flash_notice, #flash_error, #flash_alert {
+    padding: 5px 8px;
+    margin: 10px 0;
+    border-radius: 5px 5px 5px 5px;
+
+}
+
+#flash_notice {
+    background-color: #CFC;
+    border: solid 1px #6C6;
+}
+
+#flash_error, #flash_alert {
+    background-color: #FCC;
+    border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+    display: inline;
+}
+
+.error_messages {
+    width: 400px;
+    border: 2px solid #CF0000;
+    padding: 0px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    font-size: 12px;
+}
+
+.error_messages h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff;
+}
+
+.error_messages p {
+    margin: 8px 10px;
+}
+
+.error_messages ul {
+    margin: 0;
+}
+
+span.error {
+    color: #D00;
+    padding-left: 5px;
+    font-size: 12px;
+}
+
+/*END FLASH AND ERROR MESSAGES */
+
+
+.buttonbar {
+    border-top: 1px gray solid;
+    margin: 8px auto;
+    padding-top: 8px;
+}
+
+.formTextBox{
+    font-family: Tahoma, verdana, helvetica, sans-serif;
+    height:1.5em; line-height:1.5em; font-size:100%; padding:0;
+}
+#footer {
+    color:#808080;
+    font-size: 11px;
+    text-align: center;
+    padding: 0px 0px 0px 16px;
+}

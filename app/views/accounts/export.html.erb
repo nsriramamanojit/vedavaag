@@ -1,0 +1,39 @@
+<table class="tablesorter">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Account</th>
+    <th>Bank</th>
+    <th>Branch</th>
+    <th>Code</th>
+  </tr>
+  </thead>
+  <% i=1 %>
+  <% @accounts.each do |tr| %>
+      <tr align="left">
+        <td><%= i %></td>
+        <td><%= tr.name.titleize %></td>
+        <td><%= tr.account_number %></td>
+        <td><%= tr.bank_name? ? tr.bank_name.upcase : "N.A" %></td>
+        <td><%= tr.branch_name? ? tr.branch_name.titleize : "N.A" %></td>
+        <td><%= tr.branch_code? ? tr.branch_code : "N.A" %></td>
+      </tr>
+      <% i = i + 1 %>
+  <% end %>
+</table>
+
+<style type="text/css">
+    table.tablesorter {
+        border-collapse: collapse;
+        border: 1px solid #000000;
+        font-size: 10px;
+
+    }
+
+    table.tablesorter td, table.tablesorter th {
+        border-collapse: collapse;
+        border: 1px solid #000000;
+    }
+
+</style>

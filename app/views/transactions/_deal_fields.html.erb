@@ -1,0 +1,10 @@
+<tr>
+  <td colspan="2"><h4>Upload CSV File</h4></td>
+  <td></td>
+</tr>
+<%= f.fields_for :deal do |d| %>
+<tr>
+  <td></td>
+  <td><%= d.file_field :attachment %></td>
+</tr>
+<%end%>

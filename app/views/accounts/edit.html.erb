@@ -1,0 +1,8 @@
+<% title "VEDAVAAG | Accounts " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('VEDAVAAG | Accounts','Modify Account') %>
+<% end %>
+<%= render 'form',:heading => 'Create New Account' %>
+<div class="link_buttons">
+  <%=link_to_all(accounts_path)%>
+</div>

@@ -1,0 +1,21 @@
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= simple_form_for(@user, :validate => true,:url=>url_for(:action=>:profile_update)) do |f| %>
+      <fieldset>
+        <%= f.input :login,:label=>"Login Name",:placeholder=>"Desired Login Name", :disabled => true %>
+        <%= f.input :name, :label=>"Full Name", :placeholder=>"Full Name" %>
+        <%= f.input :email, :label=>"Email",:placeholder=>"user@example.com"%>
+        <%= f.input :mobile_number, :label=>"Mobile", :placeholder=>"Mobile Number Must be 10 Digits" %>
+        <%= f.input :phone_number, :label=>"Land Phone",:placeholder=>"Phone Number" %>
+        <%= f.submit 'Save', :disable_with=>'Please wait...' %>
+      </fieldset>
+  <% end %>
+  <br/>
+  <%= link_to content_tag(:span, 'Back to Profile'), profile_user_path(current_user), :class => 'btn-blue' %>
+  <%# link_to content_tag(:span, 'Change Password'), change_password_user_path(current_user), :class => 'btn-blue' %>
+  <br/>
+
+</div>

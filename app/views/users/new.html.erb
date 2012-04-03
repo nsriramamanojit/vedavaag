@@ -1,0 +1,8 @@
+<% title "VEDAVAAG | Users " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('VEDAVAAG | Users','Create User') %>
+<% end %>
+<%= render 'form',:heading => 'Create New User' %>
+<div class="link_buttons">
+  <%=link_to_all(users_path)%>
+</div>

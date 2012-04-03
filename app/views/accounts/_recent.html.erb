@@ -1,0 +1,28 @@
+<div class="recent_items">
+  <div class="margin">
+    <h3>Recent Accounts</h3>
+    <% if @recent.blank? %>
+        No Accounts Added Yet...
+    <% else %>
+        <% for account in @recent %>
+            <div id="margin">
+              <div class="left">&nbsp;</div>
+              <div class="right">&nbsp;</div>
+              <div class="left-to-right">
+                <div class="pen">&nbsp;</div>
+                <div class="text">
+                  <%= link_to account.name.titleize, account_path(account), :class=>'usuallink tipTipRight',:title => "View Details" %>
+                  <div style="margin: 8px 0px;">&nbsp;</div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+    <div class="see_all">
+      <a href="<%=accounts_path%>">
+        View all Accounts
+        <img hspace="2" border="0" alt="" src="/images/blue^.gif">
+      </a>
+    </div>
+  </div>
+</div>

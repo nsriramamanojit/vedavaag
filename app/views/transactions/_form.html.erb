@@ -1,0 +1,36 @@
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= form_tag @transaction, :multipart => true do -%>
+      <table>
+        <tr>
+          <td>
+            <label for="vle_user">
+              Transaction Name :
+            </label>
+          </td>
+          <td>
+            <%= text_field_tag :name -%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="vle_user">
+              Select a CSV File :
+            </label>
+          </td>
+          <td>
+            <%= file_field_tag :file -%>
+          </td>
+        </tr>
+        <tr>
+          <td colspan='2' align="right">
+            <%= submit_tag 'Submit', :disable_with => 'Please wait...' -%>
+          </td>
+        </tr>
+      </table>
+  <% end -%>
+</div>
+

@@ -1,0 +1,8 @@
+<% title "SECC | Roles " %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('SECC | Roles','Create Role') %>
+<% end %>
+<%= render 'form',:heading => 'Create New Role' %>
+<div class="link_buttons">
+ <%=link_to_all(roles_path)%>
+</div>

@@ -1,0 +1,31 @@
+<div class="recent_items">
+	<div class="margin">
+		<h3>Recent Roles</h3>
+        <% if @recent.blank? %>
+          No Roles Added Yet...
+        <% else %>
+         <% for role in @recent %>
+		<div id="margin">
+			<div class="left">&nbsp;</div>
+			<div class="right">&nbsp;</div>
+			<div class="left-to-right">
+				<div class="pen">&nbsp;</div>
+				<div class="text">
+                     <%=link_to role.name.titleize ,role_path(role),:class=>'usuallink tipTipRight',:rel=>"facebox", :title => "View Details"%>
+					<div style="margin: 8px 0px;">&nbsp;</div>
+				</div>
+				<div class="date">
+                    (<b><%=role.users.size %></b>)
+                </div>
+			</div>
+		</div>
+         <% end %>
+       <% end %>
+		<div class="see_all">
+			<a href="/roles">
+			 View all Roles
+			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
+			</a>
+		</div>
+	</div>
+</div>

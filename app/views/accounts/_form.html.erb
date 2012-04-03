@@ -1,0 +1,18 @@
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= simple_form_for(@account, :validate => true) do |f| %>
+      <fieldset>
+        <%= f.input :name,:label=>"Full Name",:placeholder=>"Account Holder Name" %>
+        <%= f.input :account_number,:label=>"Account Number",:placeholder=>"Account Number" %>
+        <%= f.input :bank_name,:label=>"Bank",:placeholder=>"Name of the Bank" %>
+        <%= f.input :branch_name,:label=>"Branch",:placeholder=>"Branch" %>
+        <%= f.input :branch_code,:label=>"Branch Code",:placeholder=>"Branch Code" %>
+        <%= f.input :mobile, :label=>"Mobile", :placeholder=>"Mobile Number Must be 10 Digits" %>
+        <%= f.input :remarks, :label=>"Remarks",:input_html => { :cols => 50, :rows => 3 } %>
+        <%= f.submit 'Save', :disable_with=>'Please wait...' %>
+      </fieldset>
+  <% end %>
+</div>

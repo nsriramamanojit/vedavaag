@@ -1,0 +1,70 @@
+<% title "VEDAVAAG | Transactions" %>
+<h3>VEDAVAAG | Transactions | Manage Transactions</h3>
+
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%# render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing Transactions. <br/>
+  Along with creating, managing Transactions for Application.<br/>
+</div>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'New Transaction'), new_transaction_path, :class => 'btn-blue' %>
+</div>
+
+<% if @transactions.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Transactions are Found in the System..!
+    </div>
+<% else %>
+    <table width="100%">
+      <tr>
+        <td align="right">
+          <b><i>per page</i></b>
+          <%= per_page %>| <%= page_entries_info @transactions %>
+        </td>
+      </tr>
+    </table>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Status?</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Remarks</th>
+        <th>Total</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @transactions.each do |transaction| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%# link_to_active(account, approve_account_path(account)) %></td>
+            <td><%= transaction.name%></td>
+            <td><%= transaction.date %></td>
+            <td><%= transaction.remarks %></td>
+            <td><%= transaction.deals.size %></td>
+            <td>
+              <%= link_for_show(transaction) %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="flickr_pagination">
+      <%= page_entries_info @transactions %> <%= will_paginate @transactions, :container => false %>
+    </div>
+<% end %>
+
+
+
+
+
+
+
+

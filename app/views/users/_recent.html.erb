@@ -1,0 +1,28 @@
+<div class="recent_items">
+  <div class="margin">
+    <h3>Recent Login Users</h3>
+    <% if @recent.blank? %>
+        No Users Added Yet...
+    <% else %>
+        <% for user in @recent %>
+            <div id="margin">
+              <div class="left">&nbsp;</div>
+              <div class="right">&nbsp;</div>
+              <div class="left-to-right">
+                <div class="pen">&nbsp;</div>
+                <div class="text">
+                  <%= link_to user.login, user_path(user), :class=>'usuallink tipTipRight',:rel=>"facebox",:title => "View Details" %>
+                  <div style="margin: 8px 0px;">&nbsp;</div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+    <div class="see_all">
+      <a href="/users">
+        View all Users
+        <img hspace="2" border="0" alt="" src="/images/blue^.gif">
+      </a>
+    </div>
+  </div>
+</div>

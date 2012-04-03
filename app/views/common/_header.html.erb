@@ -1,0 +1,15 @@
+<div id="page_top">
+  <%= link_to image_tag("vedavaag_logo.jpg", :border => 0,:height => 70) %>
+  <div id="top_menu">
+    <div id="top_m">
+      <ul class="top_menu">
+        <li>Welcome-
+          <%= current_user.name %>
+        </li>
+        <li><%= link_to 'Home', "#" %></li>
+        <li><%= link_to 'Profile', profile_user_path(current_user.id) %></li>
+        <li><%= link_to "Sign out", logout_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>

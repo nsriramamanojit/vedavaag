@@ -1,0 +1,53 @@
+<% title "VEDAVAAG | Roles" %>
+<h3>VEDAVAAG | Roles | Manage Roles</h3>
+
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing Roles. <br/>
+  Along with creating, managing Roles for Application.
+</div>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'New Role'), new_role_path, :class => 'btn-blue' %>
+  <%# link_to content_tag(:span, 'Export'), "#", :class => 'btn-yellow' %>
+</div>
+<div id="new_form">
+  <%= render 'form' %>
+</div>
+
+<% if @roles.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Roles are Found in the System..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>SNo</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Users</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @roles.each do |role| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%= highlight(role.name.titleize,params[:search]) %></td>
+            <td><%= role.description %></td>
+            <td><%= link_to role.users.size,"#",:class=>'tipTipRight',:title=>users_list(role.users) %></td>
+            <td>
+              <%= link_for_show_pop(role) %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+
+

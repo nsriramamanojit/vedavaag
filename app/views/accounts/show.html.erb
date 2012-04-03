@@ -1,0 +1,38 @@
+<% title "VEDAVAAG | Accounts" %>
+<div id="page_container">
+  <div id="page_content">
+    <div class="content">
+      <h3>VEDAVAAG | Accounts | Account Details</h3>
+
+      <table width="100%" border=0 cellspacing=1 cellpadding=3 class="listTable">
+        <tr>
+          <th width="20%">Name</th>
+          <td><%= @account.name.titleize %></td>
+        </tr>
+        <tr>
+          <th width="20%">Account Number</th>
+          <td><%= @account.account_number %></td>
+        </tr>
+        <tr>
+          <th width="20%">Bank</th>
+          <td><%= @account.bank_name? ? @account.bank_name.upcase : "N.A" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Branch</th>
+          <td><%= @account.branch_name? ? @account.branch_code.titleize : "N.A" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Branch Code</th>
+          <td><%= @account.branch_code? ? @account.branch_code : "N.A" %></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="link_buttons">
+    <%= link_to content_tag(:span, 'Back to Accounts'), accounts_path, :class => 'btn-yellow' %>
+    <%= link_to content_tag(:span, 'New Account'), new_account_path, :class => 'btn-blue' %>
+    <%= link_to content_tag(:span, 'Edit Account'), edit_account_path(@account), :class => 'btn-blue' %>
+  </div>
+</div>
