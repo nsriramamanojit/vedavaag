@@ -11,4 +11,5 @@ gem "paperclip"
 gem "meta_where"
 gem "simple_form",'1.5.2'
 gem 'client_side_validations'
+gem "spreadsheet"
 

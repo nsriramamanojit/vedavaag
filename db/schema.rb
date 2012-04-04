@@ -42,7 +42,9 @@ ActiveRecord::Schema.define(:version => 20120403102840) do
 
   create_table "deals", :force => true do |t|
     t.integer  "transaction_id"
-    t.integer  "account_number"
+    t.string   "account_number"
+    t.string   "name"
+    t.string   "branch_code"
     t.decimal  "amount",         :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,7 +64,11 @@ ActiveRecord::Schema.define(:version => 20120403102840) do
     t.string   "name"
     t.date     "date"
     t.text     "remarks"
-    t.boolean  "status",      :default => true
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.boolean  "status",                  :default => true
     t.integer  "created_by"
     t.integer  "modified_by"
     t.datetime "created_at"

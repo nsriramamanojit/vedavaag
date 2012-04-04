@@ -2,7 +2,13 @@ class Transaction < ActiveRecord::Base
 
   #relations
   has_many :deals
-  accepts_nested_attributes_for :deals, :allow_destroy => true
+
+  #attachment
+  has_attached_file :attachment
+
+  #validations
+  validates :name, :presence => true
+
 
   #Recent and Search
   class << self

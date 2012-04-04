@@ -2,7 +2,9 @@ class CreateDeals < ActiveRecord::Migration
   def self.up
     create_table :deals do |t|
       t.integer :transaction_id
-      t.integer :account_number
+      t.string :account_number
+      t.string :name
+      t.string :branch_code
       t.decimal :amount
 
 

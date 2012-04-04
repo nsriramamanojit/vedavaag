@@ -31,27 +31,25 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    require 'csv'
     @transaction = Transaction.new(params[:transaction])
-    @transaction.name = params[:name]
-    @transaction.date = Time.now
 
     respond_to do |format|
-      if @transaction.save
-        csv_file = params[:file]
-        n=0
-        CSV.new(csv_file.tempfile, :col_sep => ",").each do |row|
-          transaction = Deal.create do |tr|
-            tr.transaction_id =@transaction.id
-            tr.account_number = row[0]
-            tr.amount = row[1]
-          end
-          transaction.save
-          n = n + 1
-        end
-
-        format.html { redirect_to(transactions_path, :notice => 'Transaction was successfully created.') }
-        format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
+         if @transaction.save
+           file = params[:transaction][:attachment]
+           book = Spreadsheet.open(file.tempfile)
+           sheet1 = book.worksheet 0
+           sheet1.each 1 do |row|
+             transaction = Deal.create do |tr|
+               tr.transaction_id = @transaction.id
+               tr.name = row[0]
+               tr.account_number = row[1].to_i
+               tr.amount = row[3]
+               tr.branch_code = "%05d" % row[2]
+             end
+             transaction.save
+           end
+           format.html { redirect_to(transactions_path, :notice => 'Transaction was successfully created.') }
+           format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @transaction.errors, :status => :unprocessable_entity }
