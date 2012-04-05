@@ -1,0 +1,1 @@
+$("#status_<%=@transaction.id%>").html("<%=escape_javascript(link_to @transaction.status? ? image_tag('tick.gif') : image_tag('cross.gif'),approve_transaction_path,:remote=>true)%>");

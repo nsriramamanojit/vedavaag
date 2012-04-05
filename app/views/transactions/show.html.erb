@@ -1,5 +1,59 @@
-<p id="notice"><%= notice %></p>
+<% title "VEDAVAAG | Transactions" %>
+<h3>VEDAVAAG | Transactions | View Transaction Records</h3>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'Back to Transactions'), transactions_path, :class => 'btn-blue' %>
+</div>
+
+<% if @records.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Transaction Records are Found in the System..!
+    </div>
+<% else %>
+    <table width="100%">
+      <tr>
+        <td align="right">
+          <b><i>per page</i></b>
+          <%= per_page %>| <%= page_entries_info @records %>
+        </td>
+      </tr>
+    </table>
+
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Account #</th>
+        <th>Branch Code</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @records.each do |record| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%= record.name %></td>
+            <td><%= record.account_number.to_i%></td>
+            <td><%= record.branch_code %></td>
+            <td><%= record.amount %></td>
+            <td></td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="flickr_pagination">
+      <%= page_entries_info @records %> <%= will_paginate @records, :container => false %>
+    </div>
+
+<% end %>
 
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+
+
+
+
+
+

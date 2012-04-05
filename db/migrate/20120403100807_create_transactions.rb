@@ -4,6 +4,8 @@ class CreateTransactions < ActiveRecord::Migration
       t.string :name
       t.date :date
       t.text :remarks
+      t.string :transfer_account
+      t.string :transfer_branch_code
 
       t.string :attachment_file_name
       t.string :attachment_content_type

@@ -2,6 +2,10 @@
 <% content_for :sub_heading do %>
     <%= sub_heading('VEDAVAAG | Transactions','Create Transaction') %>
 <% end %>
+<div class="help_text">
+  Area for creating Transactions. <br/>
+  The sample Excel file. Click the icon to Download. <%= link_to (image_tag "/images/excel.png"),"http://vedavaag.com" %>
+</div>
 <%= render 'form',:heading => 'Create New Account' %>
 <div class="link_buttons">
   <%=link_to_all(transactions_path)%>

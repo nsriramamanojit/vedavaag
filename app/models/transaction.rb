@@ -7,7 +7,7 @@ class Transaction < ActiveRecord::Base
   has_attached_file :attachment
 
   #validations
-  validates :name, :presence => true
+  validates :name,:transfer_account, :transfer_branch_code,:presence => true
 
 
   #Recent and Search

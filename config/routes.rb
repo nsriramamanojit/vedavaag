@@ -1,6 +1,9 @@
 Vedavaag::Application.routes.draw do
 
-  resources :transactions
+  resources :transactions do
+    get :approve, :on=>:member
+    get :text_report, :on=>:member
+  end
 
   resources :accounts do
     post :csv_import, :on=>:collection

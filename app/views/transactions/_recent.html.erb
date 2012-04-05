@@ -1,0 +1,28 @@
+<div class="recent_items">
+  <div class="margin">
+    <h3>Recent Transactions</h3>
+    <% if @recent.blank? %>
+        No Transactions Added Yet...
+    <% else %>
+        <% for transaction in @recent %>
+            <div id="margin">
+              <div class="left">&nbsp;</div>
+              <div class="right">&nbsp;</div>
+              <div class="left-to-right">
+                <div class="pen">&nbsp;</div>
+                <div class="text">
+                  <%= link_to truncate(transaction.name.titleize,:length=>10), transaction_path(transaction), :class=>'usuallink tipTipRight',:title => "View Records" %>
+                  <div style="margin: 8px 0px;">&nbsp;</div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+    <div class="see_all">
+      <a href="<%=transactions_path%>">
+        View all Transactions
+        <img hspace="2" border="0" alt="" src="/images/blue^.gif">
+      </a>
+    </div>
+  </div>
+</div>

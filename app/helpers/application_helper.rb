@@ -32,15 +32,10 @@ module ApplicationHelper
   end
 
   def link_to_all(path)
-    link_to content_tag(:span, "Back To List &rarr;".html_safe), path, :class => 'btn-yellow'
+    link_to content_tag(:span, "&larr; Back To List".html_safe), path, :class => 'btn-yellow'
   end
   def created_by(created_by)
     User.where(:id => created_by).first.name
-  end
-  def link_to_active(model, path)
-    content = ''
-    content << link_to(model.report_status? ? image_tag('tick.gif') : image_tag('cros.gif'), path)
-    content.html_safe
   end
   def title(page_title, show_title = true)
     content_for(:title) { h(page_title.to_s) }

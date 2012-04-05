@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20120403102840) do
     t.string   "name"
     t.date     "date"
     t.text     "remarks"
+    t.string   "transfer_account"
+    t.string   "transfer_branch_code"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"

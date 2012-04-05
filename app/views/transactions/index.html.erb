@@ -3,7 +3,7 @@
 
 <% content_for :left_panel do %>
     <td valign="top" width="250"> <%= render 'common/search' %>
-      <%# render 'recent' %> </td>
+      <%= render 'recent' %> </td>
 <% end %>
 <div class="help_text">
   Area for managing Transactions. <br/>
@@ -33,6 +33,8 @@
         <th>Status?</th>
         <th>Name</th>
         <th>Date</th>
+        <th>Transfer #</th>
+        <th>Br. Code</th>
         <th>Remarks</th>
         <th>Records</th>
         <th>Actions</th>
@@ -43,13 +45,17 @@
       <% @transactions.each do |transaction| %>
           <tr>
             <td><%= i %></td>
-            <td><%# link_to_active(account, approve_account_path(account)) %></td>
-            <td><%= transaction.name%></td>
-            <td><%= transaction.date %></td>
-            <td><%= transaction.remarks %></td>
+            <td><%= link_to_active(transaction, approve_transaction_path(transaction)) %></td>
+            <td><%= truncate(transaction.name,:length=>10) %></td>
+            <td><%= transaction.date? ? transaction.date.strftime("%d-%b-%Y") : "N.A" %></td>
+            <td><%= transaction.transfer_account %></td>
+            <td><%= transaction.transfer_branch_code %></td>
+            <td><%= transaction.remarks? ? (link_to "View", "#", :class => "tipTipRight", :title => transaction.remarks) : "N.A" %></td>
             <td><%= transaction.deals.size %></td>
             <td>
-              <%= link_for_show(transaction) %>
+              <%= link_to "View Records", transaction, :class => "usuallink tipTipLeft", :title => "View Records" %>
+              |
+              <%= link_to "Generate Text", text_report_transaction_path(transaction), :class => "usuallink tipTip", :title => "Generate Text File" %>
             </td>
           </tr>
           <% i = i + 1 %>
