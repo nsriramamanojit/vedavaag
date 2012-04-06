@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Logged in Successfully."
-      redirect_to(:controller => 'users', :action => 'index')
+      redirect_to(:controller => 'generals', :action => 'index')
     else
       flash[:error] = "Invalid User Name or Password. "
       render :action => :new

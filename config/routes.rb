@@ -1,5 +1,7 @@
 Vedavaag::Application.routes.draw do
 
+ resources :generals
+
   resources :transactions do
     get :approve, :on=>:member
     get :text_report, :on=>:member
