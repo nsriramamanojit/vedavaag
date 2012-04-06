@@ -42,7 +42,7 @@ class TransactionsController < ApplicationController
             tr.name = row[0]
             tr.account_number = row[1].to_i
             tr.amount = row[3]
-            tr.branch_code = "%05d" % row[2]
+            tr.branch_code =  row[2]   #"%05d" %
           end
           transaction.save
         end
