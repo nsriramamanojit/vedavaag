@@ -68,6 +68,7 @@ class TransactionsController < ApplicationController
   def approve
     @transaction = Transaction.find(params[:id])
     @transaction.update_attribute('approve_status', @transaction.approve_status ? false : true)
+    @transaction.update_attribute('approved_by',current_user .id)
     respond_to do |format|
       format.js
     end
@@ -75,6 +76,8 @@ class TransactionsController < ApplicationController
   def approve_pay
     @transaction = Transaction.find(params[:id])
     @transaction.update_attribute('fund_status', @transaction.fund_status ? false : true)
+    @transaction.update_attribute('payment_by',current_user .id)
+
     respond_to do |format|
       format.js
     end
