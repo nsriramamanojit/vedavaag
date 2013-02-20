@@ -1,8 +1,8 @@
 <div class="recent_items">
   <div class="margin">
-    <h3>Recent Transactions</h3>
+    <h3>Recent Requests</h3>
     <% if @recent.blank? %>
-        No Transactions Added Yet...
+        No Requests Added Yet...
     <% else %>
         <% for transaction in @recent %>
             <div id="margin">
@@ -20,7 +20,7 @@
     <% end %>
     <div class="see_all">
       <a href="<%=transactions_path%>">
-        View all Transactions
+        View all Requests
         <img hspace="2" border="0" alt="" src="/images/blue^.gif">
       </a>
     </div>

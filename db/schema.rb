@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403102840) do
+ActiveRecord::Schema.define(:version => 20120403100807) do
 
   create_table "accounts", :force => true do |t|
-    t.string   "account_number",                    :null => false
-    t.string   "name",                              :null => false
-    t.string   "mobile",         :default => "N.A"
+    t.string   "account_number",                   :null => false
+    t.string   "name",                             :null => false
+    t.string   "mobile",                           :null => false
     t.text     "address"
-    t.string   "bank_name",      :default => "N.A"
-    t.string   "branch_name",    :default => "N.A"
-    t.string   "branch_code",    :default => "N.A"
-    t.string   "micr_code",      :default => "N.A"
-    t.string   "ifsc_code",      :default => "N.A"
+    t.string   "bank_name",                        :null => false
+    t.string   "branch_name"
+    t.string   "branch_code"
+    t.string   "micr"
+    t.string   "ifsc"
     t.text     "remarks"
     t.boolean  "status",         :default => true
     t.integer  "created_by"
@@ -40,16 +40,6 @@ ActiveRecord::Schema.define(:version => 20120403102840) do
     t.datetime "updated_at"
   end
 
-  create_table "deals", :force => true do |t|
-    t.integer  "transaction_id"
-    t.string   "account_number"
-    t.string   "name"
-    t.string   "branch_code"
-    t.decimal  "amount",         :precision => 10, :scale => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -62,17 +52,28 @@ ActiveRecord::Schema.define(:version => 20120403102840) do
 
   create_table "transactions", :force => true do |t|
     t.string   "name"
-    t.date     "date"
+    t.string   "description"
     t.text     "remarks"
-    t.string   "transfer_account"
-    t.string   "transfer_branch_code"
+    t.decimal  "request_amount",          :precision => 10, :scale => 2
+    t.date     "transaction_date"
+    t.string   "transaction_id"
+    t.date     "approve_date"
+    t.string   "approve_id"
+    t.string   "approve_remarks"
+    t.decimal  "paid_amount",             :precision => 10, :scale => 2
+    t.date     "payment_date"
+    t.string   "payment_id"
+    t.string   "payment_remarks"
+    t.boolean  "status",                                                 :default => false
+    t.boolean  "approve_status",                                         :default => false
+    t.boolean  "fund_status",                                            :default => false
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
-    t.boolean  "status",                  :default => true
-    t.integer  "created_by"
-    t.integer  "modified_by"
+    t.integer  "requested_by"
+    t.integer  "approved_by"
+    t.integer  "payment_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

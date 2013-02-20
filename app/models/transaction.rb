@@ -1,13 +1,10 @@
 class Transaction < ActiveRecord::Base
 
-  #relations
-  has_many :deals
-
   #attachment
   has_attached_file :attachment
 
   #validations
-  validates :name,:transfer_account, :transfer_branch_code,:presence => true
+  validates :name,:request_amount,:description,:presence => true
 
 
   #Recent and Search

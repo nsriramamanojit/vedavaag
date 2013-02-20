@@ -76,7 +76,15 @@ module ApplicationHelper
   def link_to_active(model, path)
     content = ''
     content << "<div id='status_#{model.id}'>"
-    content << link_to(model.status ? image_tag('tick.gif') : image_tag('cros.gif'), path, :remote=>true)
+    content << link_to(model.status ? image_tag('tick.gif') : image_tag('cross.gif'), path, :remote=>true)
+    content << "</div>"
+    content.html_safe
+  end
+
+  def link_to_active_pay(model, path)
+    content = ''
+    content << "<div id='status_pay_#{model.id}'>"
+    content << link_to(model.status ? image_tag('tick.gif') : image_tag('cross.gif'), path, :remote=>true)
     content << "</div>"
     content.html_safe
   end

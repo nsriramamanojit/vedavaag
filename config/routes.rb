@@ -5,6 +5,7 @@ Vedavaag::Application.routes.draw do
   resources :transactions do
     get :approve, :on=>:member
     get :text_report, :on=>:member
+    get :approve_pay, :on=>:member
   end
 
   resources :accounts do

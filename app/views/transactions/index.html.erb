@@ -1,21 +1,21 @@
-<% title "VEDAVAAG | Transactions" %>
-<h3>VEDAVAAG | Transactions | Manage Transactions</h3>
+<% title "VEDAVAAG | Requests" %>
+<h3>VEDAVAAG | Requests | Manage Requests</h3>
 
 <% content_for :left_panel do %>
     <td valign="top" width="250"> <%= render 'common/search' %>
       <%= render 'recent' %> </td>
 <% end %>
 <div class="help_text">
-  Area for managing Transactions. <br/>
-  Along with creating, managing Transactions for Application.<br/>
+  Area for managing Request. <br/>
+  Along with creating, managing Requests for Application.<br/>
 </div>
 <div class="link_buttons">
-  <%= link_to content_tag(:span, 'New Transaction'), new_transaction_path, :class => 'btn-blue' %>
+  <%= link_to content_tag(:span, 'New Request'), new_transaction_path, :class => 'btn-blue' %>
 </div>
 
 <% if @transactions.blank? %>
     <div class="error_msg">
-      OOPS!.. No Transactions are Found in the System..!
+      OOPS!.. No Requests are Found in the System..!
     </div>
 <% else %>
     <table width="100%">
@@ -30,13 +30,13 @@
       <thead>
       <tr>
         <th>#</th>
-        <th>Status?</th>
-        <th>Name</th>
+        <th>Approve</th>
+        <th>Payment</th>
         <th>Date</th>
-        <th>Transfer #</th>
-        <th>Br. Code</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Amount</th>
         <th>Remarks</th>
-        <th>Records</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -46,16 +46,14 @@
           <tr>
             <td><%= i %></td>
             <td><%= link_to_active(transaction, approve_transaction_path(transaction)) %></td>
+            <td><%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %></td>
+            <td><%= transaction.transaction_date? ? transaction.transaction_date.strftime("%d-%m-%Y") : "N.A" %></td>
             <td><%= truncate(transaction.name,:length=>10) %></td>
-            <td><%= transaction.date? ? transaction.date.strftime("%d-%b-%Y") : "N.A" %></td>
-            <td><%= transaction.transfer_account %></td>
-            <td><%= transaction.transfer_branch_code %></td>
+            <td><%= truncate(transaction.description,:length=>10) %></td>
+            <td><%= transaction.request_amount %></td>
             <td><%= transaction.remarks? ? (link_to "View", "#", :class => "tipTipRight", :title => transaction.remarks) : "N.A" %></td>
-            <td><%= transaction.deals.size %></td>
             <td>
-              <%= link_to "View Records", transaction, :class => "usuallink tipTipLeft", :title => "View Records" %>
-              |
-              <%= link_to "Generate Text", text_report_transaction_path(transaction), :class => "usuallink tipTip", :title => "Generate Text File" %>
+              <%= link_for_show_pop(transaction) %>
             </td>
           </tr>
           <% i = i + 1 %>

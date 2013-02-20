@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_filter :recent_items, :require_user
-
+  layout "application", :except => [:show, :edit]
   def index
     @transactions = Transaction.search(params[:search]).paginate(:page => page, :per_page => per_page)
 
@@ -12,7 +12,6 @@ class TransactionsController < ApplicationController
 
   def show
     @transaction = Transaction.find(params[:id])
-    @records = Deal.where(:transaction_id => @transaction.id).paginate(:page => page, :per_page => per_page)
   end
 
   def new
@@ -30,23 +29,10 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(params[:transaction])
-    @transaction.date = Time.now
+    @transaction.transaction_date= Time.now
     respond_to do |format|
       if @transaction.save
-        file = params[:transaction][:attachment]
-        book = Spreadsheet.open(file.tempfile)
-        sheet1 = book.worksheet 0
-        sheet1.each 1 do |row|
-          transaction = Deal.create do |tr|
-            tr.transaction_id = @transaction.id
-            tr.name = row[0]
-            tr.account_number = row[1].to_i
-            tr.amount = row[3]
-            tr.branch_code =  row[2]   #"%05d" %
-          end
-          transaction.save
-        end
-        format.html { redirect_to(transactions_path, :notice => 'Transaction was successfully created.') }
+        format.html { redirect_to(transactions_path, :notice => 'Request was successfully created.') }
         format.xml { render :xml => @transaction, :status => :created, :location => @transaction }
       else
         format.html { render :action => "new" }
@@ -81,27 +67,17 @@ class TransactionsController < ApplicationController
 
   def approve
     @transaction = Transaction.find(params[:id])
-    @transaction.update_attribute('status', @transaction.status ? false : true)
+    @transaction.update_attribute('approve_status', @transaction.approve_status ? false : true)
     respond_to do |format|
       format.js
     end
   end
-
-  def text_report
+  def approve_pay
     @transaction = Transaction.find(params[:id])
-    @records = Deal.where(:transaction_id => @transaction.id)
-    total = @records.sum(:amount)
-    require 'csv'
-    outfile = @transaction.name + ".txt"
-    csv_data = CSV.generate do |csv|
-      csv<<[@transaction.transfer_account, @transaction.transfer_branch_code, Time.now.strftime("%d/%m/%Y"), "%.2f"%total, nil, @transaction.transfer_account, @transaction.name]
-      @records.each do |tr|
-        csv<<[tr.account_number, tr.branch_code, Time.now.strftime("%d/%m/%Y"), nil, "%.2f"% tr.amount, tr.account_number, @transaction.name]
-      end
+    @transaction.update_attribute('fund_status', @transaction.fund_status ? false : true)
+    respond_to do |format|
+      format.js
     end
-    send_data csv_data,
-              :type => 'text/plain; charset=UTF-8',
-              :disposition => "attachment; filename=#{outfile}"
   end
 
   ########################################################
