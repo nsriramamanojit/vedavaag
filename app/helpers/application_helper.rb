@@ -73,6 +73,15 @@ module ApplicationHelper
     end
     content.html_safe
   end
+  def get_user(transaction)
+    users = User.where(:id=>transaction.requested_by)
+    content = ""
+    for user in users
+      content << user.name.titleize
+      content <<  "<br/>"
+    end
+    content.html_safe
+  end
 
   def link_to_active(model, path)
     content = ''

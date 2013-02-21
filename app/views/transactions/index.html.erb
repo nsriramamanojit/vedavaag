@@ -37,6 +37,9 @@
         <th>Description</th>
         <th>Amount</th>
         <th>Remarks</th>
+        <% if has_any_role? :sa,:admin,:manager %>
+        <th>Request By</th>
+         <% end %>
         <th>Actions</th>
       </tr>
       </thead>
@@ -65,6 +68,9 @@
             <td><%= truncate(transaction.description, :length => 10) %></td>
             <td><%= transaction.request_amount %></td>
             <td><%= transaction.remarks? ? (link_to "View", "#", :class => "tipTipRight", :title => transaction.remarks) : "N.A" %></td>
+            <% if has_any_role? :sa,:admin,:manager%>
+             <td><%= get_user(transaction) %></td>
+            <% end %>
             <td>
               <%= link_for_show_pop(transaction) %>
             </td>

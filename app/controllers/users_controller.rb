@@ -36,11 +36,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.password = params[:user][:login]
+    @user.password = params[:user][:login].downcase
     @user.login = params[:user][:login].downcase
+
 
     respond_to do |format|
       if @user.save
+
+        UserMailer.welcome_email(@user).deliver
         format.html { redirect_to(users_path, :notice => 'User was successfully created.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else

@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.search(params[:search]).paginate(:page => page, :per_page => per_page) if has_any_role? :sa,:admin, :manager
-    @transactions = Transaction.where(:requested_by=>current_user.id).search(params[:search]).paginate(:page => page, :per_page => per_page)
+    @transactions = Transaction.where(:requested_by=>current_user.id).search(params[:search]).paginate(:page => page, :per_page => per_page)  if has_role? (:employee)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,6 +33,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(params[:transaction])
     @transaction.transaction_date= Time.now
+    @transaction.requested_by =current_user.id
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to(transactions_path, :notice => 'Request was successfully created.') }
@@ -90,7 +91,7 @@ class TransactionsController < ApplicationController
   private
   def recent_items
     @recent = Transaction.recent if has_any_role? :admin,:sa,:manager
-    @recent = Transaction.recent.where(:requested_by=>current_user.id)
+    @recent = Transaction.recent.where(:requested_by=>current_user.id) if has_role? (:employee)
   end
 
 end
