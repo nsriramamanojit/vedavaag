@@ -37,9 +37,9 @@
         <th>Description</th>
         <th>Amount</th>
         <th>Remarks</th>
-        <% if has_any_role? :sa,:admin,:manager %>
-        <th>Request By</th>
-         <% end %>
+        <% if has_any_role? :sa, :admin, :manager %>
+            <th>Request By</th>
+        <% end %>
         <th>Actions</th>
       </tr>
       </thead>
@@ -56,11 +56,11 @@
               <% end %>
             </td>
             <td>
-              <% if has_any_role? :sa,:employee,:admin %>
+              <% if has_any_role? :sa, :employee, :admin %>
                   <%= transaction.fund_status ? image_tag('tick.gif') : image_tag('cross.gif') %>
 
-              <%else%>
-              <%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %>
+              <% else %>
+                  <%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %>
               <% end %>
             </td>
             <td><%= transaction.transaction_date? ? transaction.transaction_date.strftime("%d-%m-%Y") : "N.A" %></td>
@@ -68,8 +68,8 @@
             <td><%= truncate(transaction.description, :length => 10) %></td>
             <td><%= transaction.request_amount %></td>
             <td><%= transaction.remarks? ? (link_to "View", "#", :class => "tipTipRight", :title => transaction.remarks) : "N.A" %></td>
-            <% if has_any_role? :sa,:admin,:manager%>
-             <td><%= get_user(transaction) %></td>
+            <% if has_any_role? :sa, :admin, :manager %>
+                <td><%= get_user(transaction) %></td>
             <% end %>
             <td>
               <%= link_for_show_pop(transaction) %>
@@ -83,11 +83,3 @@
       <%= page_entries_info @transactions %> <%= will_paginate @transactions, :container => false %>
     </div>
 <% end %>
-
-
-
-
-
-
-
-

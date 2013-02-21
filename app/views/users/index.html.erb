@@ -7,11 +7,10 @@
 <% end %>
 <div class="help_text">
   Area for managing Login Users. <br/>
-  Along with creating, managing Login Users for Application.
+  Along with creating, managing Login Users.
 </div>
 <div class="link_buttons">
   <%= link_to content_tag(:span, 'New Login'), new_user_path, :class => 'btn-blue' %>
-  <%# link_to content_tag(:span, 'Export'), export_users_path, :class => 'btn-yellow' if permitted_to? :export %>
 </div>
 
 <% if @users.blank? %>
@@ -35,8 +34,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Mobile</th>
-        <th>Phone</th>
-        <th>Roles</th>
+        <th>Role</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -49,9 +47,7 @@
             <td><%= highlight(user.name, params[:search]) %></td>
             <td><%= user.email %></td>
             <td><%= user.mobile_number %></td>
-            <td><%= user.phone_number %></td>
             <td><%= get_role(user) %></td>
-
             <td>
               <%= link_for_show_pop(user) %>
             </td>
