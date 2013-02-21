@@ -2,12 +2,12 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
-    /*background-color: #f2f2f2;*/
-    font-family: Tahoma, verdana, helvetica, sans-serif;
+    font-family: 'Ubuntu', verdana, helvetica, sans-serif;
     font-size: 12px;
     color: #000;
     font-weight: normal;
+	background-position:top;
+	background-repeat:repeat-x;
 }
 
 html > body #ajax-indicator {
@@ -62,14 +62,14 @@ h1 { font-family: 'Bigshot One', arial, serif;
 h3 {
     padding:0 0 10px 0;
     margin: 10px 0;
-    font-family: Tahoma, verdana, helvetica, sans-serif;
+    font-family: 'Ubuntu', verdana, helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #5a5a5a;
     border-bottom: solid 1px #e5eaef;
 }
 h3 span {
-    font-family: Tahoma, verdana, helvetica, sans-serif;
+    font-family: 'Ubuntu', verdana, helvetica, sans-serif;
     font-size: 13px;
     font-weight: bold;
     color: #5a5a5a;
@@ -86,7 +86,7 @@ div.doted {
 }
 textarea {
     font-size: 12px;
-    font-family: Tahoma, verdana, helvetica, sans-serif;
+    font-family: 'Ubuntu', verdana, helvetica, sans-serif;
     padding: 1px 4px 1px 4px;
 }
 
@@ -336,7 +336,7 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
     border: solid 1px #ced8e5;
     border-top: solid 5px #0052be;
     background-color: #fff;
-    overflow:auto;
+    overflow:hidden;
     padding-bottom: 20px;
 }
 #page_container div#page_content div.content {
@@ -353,7 +353,6 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
     border: solid 6px #dee8f7;
     width: 131px;
     height: 107px;
-    background: url(/images/create_newsletter.jpg) no-repeat;
 }
 #page_container div#page_content div.content div.content_index div.index_big_image div {
     border: solid 1px #b8cad9;
@@ -376,7 +375,6 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
     border: solid 6px #dee8f7;
     width: 131px;
     height: 107px;
-    background: url(/images/manage_contacts.jpg) no-repeat;
 }
 #page_container div#page_content div.content div.content_index div.index_big_image_2 div {
     border: solid 1px #b8cad9;
@@ -660,15 +658,18 @@ span.space {
 }
 .copyright_text {
     padding: 0 36px 30px 0;
-    color: #808080;
+    color: #333333;
     font-weight: normal;
     text-align: center;
     margin-bottom: 20px;
     position: relative;
 }
-
+.copyright_text div {
+    position: absolute;
+    left: 35px;
+}
 .copyright_text a {
-    color: #808080;
+    color: #333333;
     font-weight: normal;
     text-decoration: underline;
 }
@@ -682,10 +683,10 @@ span.space {
     padding: 0;
     color: #333333;
     font-weight: normal;
-    text-align: left;
+    text-align: center;
 }
 .copyright_text_login a {
-    color: #808080;
+    color: #333333;
     font-weight: normal;
     text-decoration: underline;
 }
@@ -699,13 +700,6 @@ span.space {
     margin: 0 0 20px 0;
     background-color: #c4def5;
     color: #414141;
-    border-radius: 5px 5px 5px 5px;
-}
-.help_text_caution {
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background-color: #c4def5;
-    color: #ff0000;
     border-radius: 5px 5px 5px 5px;
 }
 .help_title {
@@ -785,6 +779,8 @@ input.btn_upload {
     display: inline;
 }
 
+
+
 .padding_left {
     padding-left: 5px;
 }
@@ -835,11 +831,13 @@ input.btn_upload {
 #tip {
     border: 1px solid #DFDFDF;
     background: #c4def5;
+    font-family: 'Ubuntu';
     display: none;
 }
 #common_text {
     border: 1px solid #DFDFDF;
     background: #FEFED6;
+    font-family: 'Ubuntu';
     display: none;
 }
 
@@ -895,7 +893,6 @@ table.tablesorter tbody tr:hover {
     border-collapse: collapse;
     border: 1px solid #cdcdcd;
 }
-
 .page_navigate {
     cursor: pointer;
 }
@@ -959,19 +956,7 @@ table.tablesorter tbody tr:hover {
     width: 70%;
 }
 
-#membership_end {margin-left: 10px; float: right; position: relative; top: 3px; cursor: pointer;}
-#membership_end div {float: left; height: 27px; color: #fff;}
-#membership_end div.ver_left {width: 6px; background: url(/images/ver_left.gif);}
-#membership_end div.ver_right {width: 6px; background: url(/images/ver_right.gif);}
-#membership_end div.ver_center {background: url(/images/ver_center.gif);}
-#membership_end div.ver_center div {margin-top: 4px;}
 
-#new_version {float: right; position: relative; top: 3px; cursor: pointer;}
-#new_version div {float: left; height: 27px; color: #fff;}
-#new_version div.ver_left {width: 6px; background: url(/images/ver_left.gif);}
-#new_version div.ver_right {width: 6px; background: url(/images/ver_right.gif);}
-#new_version div.ver_center {background: url(/images/ver_center.gif);}
-#new_version div.ver_center div {margin-top: 4px;}
 
 #left_panel {
     width: 180px;
@@ -1292,8 +1277,15 @@ div.logotype div.child:first-child {
 
 
 .formTextBox{
-    font-family: Tahoma, verdana, helvetica, sans-serif;
+    /*      background-image: url("/images/stripe.png");
+   background-repeat: repeat;*/
+
+    font-family: 'Ubuntu', arial, serif;
+    /*      -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px; */
     height:1.5em; line-height:1.5em; font-size:100%; padding:0;
+
 }
 
 /*EXTRAS */

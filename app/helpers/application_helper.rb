@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def link_for_show_pop(path)
-    link_to image_tag('/images/icons/show.png'), path, :title => 'View', :class => 'tipTipTop', :rel => "facebox", :border => 0
+    link_to image_tag('/images/icons/show.png'), path, :title =>'View', :class=>'tipTipTop', :rel=>"facebox" ,:border=>0
   end
 
   def link_for_destroy(path)
@@ -73,6 +73,7 @@ module ApplicationHelper
     end
     content.html_safe
   end
+
   def link_to_active(model, path)
     content = ''
     content << "<div id='status_#{model.id}'>"

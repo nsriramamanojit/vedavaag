@@ -1,15 +1,3 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
-/* On click Or Change Functions */
-
-$(document).ready( function() {
-    $('#add_new').click( function() {
-        $('#new_form').slideToggle("slow");
-    });
-    //
-});
-
 $(document).ready( function() {
     $('#add_new').click( function() {
         $('#new_form').slideToggle("slow");
@@ -45,20 +33,6 @@ $(document).ready(function() {
     $(".tipTipLeft").tipTip({maxWidth: '250px', edgeOffset: 10,defaultPosition: 'left',delay: 0});
     $(".tipTipTop").tipTip({maxWidth: '250px', edgeOffset: 10,defaultPosition: 'top',delay: 0});
 });
-
-
-
-
-
-
-// ajax cluetip
-$(document).ready(function() {
-    $('a.ajax-cluetip').cluetip({width: '400px;', showTitle: false, arrows: true});
-});
-
-
-
-
 
 
 

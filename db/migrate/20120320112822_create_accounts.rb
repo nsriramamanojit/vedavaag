@@ -10,7 +10,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string  :branch_name
       t.string  :branch_code
       t.string  :micr
-      t.string  :ifsc,:length=>11
+      t.string  :ifsc
       t.text    :remarks
       t.boolean :status,:default=>1
 

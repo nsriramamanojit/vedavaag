@@ -25,12 +25,12 @@
 }
 
 #tiptip_content {
-	font-size: 12px;
+	font-size: 11px;
 	color: #fff;
 	text-shadow: 0 0 2px #000;
 	padding: 4px 8px;
 	border: 1px solid rgba(255,255,255,0.25);
-	background-color: rgb(23, 23, 23);
+	background-color: rgb(25,25,25);
 	background-color: rgba(25,25,25,0.92);
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), to(#000));
 	border-radius: 3px;
@@ -51,7 +51,7 @@
 }
 
 #tiptip_holder.tip_top #tiptip_arrow {
-	border-top-color: #ffffff;
+	border-top-color: #fff;
 	border-top-color: rgba(255,255,255,0.35);
 }
 

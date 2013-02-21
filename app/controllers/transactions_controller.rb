@@ -1,8 +1,11 @@
 class TransactionsController < ApplicationController
   before_filter :recent_items, :require_user
+  filter_access_to :all
   layout "application", :except => [:show, :edit]
+
   def index
-    @transactions = Transaction.search(params[:search]).paginate(:page => page, :per_page => per_page)
+    @transactions = Transaction.search(params[:search]).paginate(:page => page, :per_page => per_page) if has_any_role? :sa,:admin, :manager
+    @transactions = Transaction.where(:requested_by=>current_user.id).search(params[:search]).paginate(:page => page, :per_page => per_page)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -86,7 +89,8 @@ class TransactionsController < ApplicationController
   ########################################################
   private
   def recent_items
-    @recent = Transaction.recent
+    @recent = Transaction.recent if has_any_role? :admin,:sa,:manager
+    @recent = Transaction.recent.where(:requested_by=>current_user.id)
   end
 
 end

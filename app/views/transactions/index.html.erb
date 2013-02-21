@@ -7,7 +7,7 @@
 <% end %>
 <div class="help_text">
   Area for managing Request. <br/>
-  Along with creating, managing Requests for Application.<br/>
+  Along with creating, managing Requests.<br/>
 </div>
 <div class="link_buttons">
   <%= link_to content_tag(:span, 'New Request'), new_transaction_path, :class => 'btn-blue' %>
@@ -45,11 +45,24 @@
       <% @transactions.each do |transaction| %>
           <tr>
             <td><%= i %></td>
-            <td><%= link_to_active(transaction, approve_transaction_path(transaction)) %></td>
-            <td><%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %></td>
+            <td>
+              <% if has_any_role? :sa, :employee %>
+                  <%= transaction.approve_status ? image_tag('tick.gif') : image_tag('cross.gif') %>
+              <% else %>
+                  <%= link_to_active(transaction, approve_transaction_path(transaction)) %>
+              <% end %>
+            </td>
+            <td>
+              <% if has_any_role? :sa,:employee,:admin %>
+                  <%= transaction.fund_status ? image_tag('tick.gif') : image_tag('cross.gif') %>
+
+              <%else%>
+              <%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %>
+              <% end %>
+            </td>
             <td><%= transaction.transaction_date? ? transaction.transaction_date.strftime("%d-%m-%Y") : "N.A" %></td>
-            <td><%= truncate(transaction.name,:length=>10) %></td>
-            <td><%= truncate(transaction.description,:length=>10) %></td>
+            <td><%= truncate(transaction.name, :length => 10) %></td>
+            <td><%= truncate(transaction.description, :length => 10) %></td>
             <td><%= transaction.request_amount %></td>
             <td><%= transaction.remarks? ? (link_to "View", "#", :class => "tipTipRight", :title => transaction.remarks) : "N.A" %></td>
             <td>

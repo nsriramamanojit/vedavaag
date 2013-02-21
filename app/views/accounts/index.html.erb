@@ -7,13 +7,10 @@
 <% end %>
 <div class="help_text">
   Area for managing Accounts. <br/>
-  Along with creating, managing Accounts for Application.<br/>
-  For import multiple account please upload CSV file. To download test click <a href="#">here</a>
+  Along with creating, managing Accounts<br/>
 </div>
 <div class="link_buttons">
   <%= link_to content_tag(:span, 'New Account'), new_account_path, :class => 'btn-blue' %>
-  <%= link_to content_tag(:span, 'Import Accounts'), "#", :class => 'btn-blue', :id => 'add_new' %>
-  <%= link_to content_tag(:span, 'Export Accounts'), export_accounts_path, :class => 'btn-blue' %>
   <%= link_to content_tag(:span, 'Accounts Home'), accounts_path, :class => 'btn-yellow' %>
 
 </div>
@@ -38,12 +35,11 @@
       <thead>
       <tr>
         <th>#</th>
-        <th>Status?</th>
         <th>Name</th>
         <th>Account</th>
         <th>Bank</th>
         <th>Branch</th>
-        <th>Code</th>
+        <th>IFSC</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -52,15 +48,13 @@
       <% @accounts.each do |account| %>
           <tr>
             <td><%= i %></td>
-            <td><%= link_to_active(account, approve_account_path(account)) %></td>
-
             <td><%= highlight(account.name.titleize,params[:search]) %></td>
             <td><%= highlight(account.account_number,params[:search]) %></td>
             <td><%= account.bank_name? ? account.bank_name.upcase : "N.A" %></td>
             <td><%= account.branch_name? ? account.branch_name.titleize : "N.A" %></td>
-            <td><%= account.branch_code %></td>
+            <td><%= account.ifsc %></td>
             <td>
-              <%= link_for_show(account) %>
+              <%= link_for_show_pop(account) %>
               <%=  link_for_edit(edit_account_path(account)) %>
               <%= link_for_destroy(account) %>
             </td>

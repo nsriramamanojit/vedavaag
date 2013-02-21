@@ -37,7 +37,7 @@
       <% @roles.each do |role| %>
           <tr>
             <td><%= i %></td>
-            <td><%= highlight(role.name.titleize,params[:search]) %></td>
+            <td><%= highlight(role.name,params[:search]) %></td>
             <td><%= role.description %></td>
             <td><%= link_to role.users.size,"#",:class=>'tipTipRight',:title=>users_list(role.users) %></td>
             <td>

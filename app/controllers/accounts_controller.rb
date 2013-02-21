@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   before_filter :recent_items, :require_user
   filter_access_to :all
+  layout "application", :except => [:show]
 
   def index
     @accounts = Account.search(params[:search]).paginate(:page => page, :per_page => per_page)
