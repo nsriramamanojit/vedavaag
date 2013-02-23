@@ -5,10 +5,10 @@
   </p>
   <%= simple_form_for(@transaction, :validate => true,:html => {:multipart => true }) do |f| %>
       <fieldset>
-        <%= f.input :name,:label=>"Name",:placeholder=>"Request Name" %>
-        <%= f.input :description,:label=>"Description",:placeholder=>"Description of Request" %>
-        <%= f.input :request_amount,:label=>"Amount",:placeholder=>"Amount"%>
-        <%= f.label :attachment, :label => 'Upload Excel File'  %>
+        <%= f.input :name,:label=>"Request Name",:placeholder=>"Request Name" %>
+        <%= f.input :description,:label=>"Request Description",:placeholder=>"Description of Request" %>
+        <%= f.input :request_amount,:label=>"Request Amount",:placeholder=>"Amount"%>
+        <%= f.label :attachment, :label => 'Upload Attachment'  %>
         <%= f.file_field :attachment %>
         <%= f.input :remarks, :label=>"Remarks",:input_html => { :cols => 50, :rows => 3 } %>
         <%= f.submit 'Save', :disable_with=>'Please wait...' %>

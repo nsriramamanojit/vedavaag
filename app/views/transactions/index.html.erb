@@ -10,7 +10,7 @@
   Along with creating, managing Requests.<br/>
 </div>
 <div class="link_buttons">
-  <%= link_to content_tag(:span, 'New Request'), new_transaction_path, :class => 'btn-blue' %>
+  <%= link_to content_tag(:span, 'New Request'), new_transaction_path, :class => 'btn-blue' if has_role? :employee%>
 </div>
 
 <% if @transactions.blank? %>

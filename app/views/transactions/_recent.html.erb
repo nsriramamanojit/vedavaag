@@ -11,7 +11,7 @@
               <div class="left-to-right">
                 <div class="pen">&nbsp;</div>
                 <div class="text">
-                  <%= link_to truncate(transaction.name.titleize,:length=>10), transaction_path(transaction), :class=>'usuallink tipTipRight',:title => "View Records" %>
+                  <%= link_to truncate(transaction.name.titleize, :length => 10), transaction_path(transaction), :class => 'usuallink tipTipRight', :title => "View Records" ,:rel=>"facebox"%>
                   <div style="margin: 8px 0px;">&nbsp;</div>
                 </div>
               </div>
@@ -19,7 +19,7 @@
         <% end %>
     <% end %>
     <div class="see_all">
-      <a href="<%=transactions_path%>">
+      <a href="<%= transactions_path %>">
         View all Requests
         <img hspace="2" border="0" alt="" src="/images/blue^.gif">
       </a>
