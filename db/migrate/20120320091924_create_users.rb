@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :mobile_number
       t.string :phone_number
+      t.integer :state_id
+      t.integer :project_id
 
       #Password and Login Details
       t.string :crypted_password

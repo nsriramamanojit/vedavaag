@@ -3,11 +3,15 @@
     <li><%= tab_heading 'Dashboard' %>
     <ul>
       <li>
+        <%= link_to 'Login Users', users_path,:class=>"tipTip1",:title=>"Manage Login Users" %>
+      </li>
+      <li>
         <%= link_to 'Roles', roles_path,:class=>"tipTip1",:title=>"Manage Roles" %>
       </li>
       <li>
-        <%= link_to 'Login Users', users_path,:class=>"tipTip1",:title=>"Manage Login Users" %>
+        <%= link_to 'States', states_path,:class=>"tipTip1",:title=>"Manage States" %>
       </li>
+
     </ul>
   </li>
    <li><%= tab_heading 'Accounts' %>

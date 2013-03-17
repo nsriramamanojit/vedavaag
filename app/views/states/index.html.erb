@@ -1,0 +1,62 @@
+<% title "Vedavaag | States" %>
+<h3>Vedavaag | States | Manage States</h3>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing States. <br/>
+  Along with creating, managing States for Application.
+</div>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'New State'), new_state_path, :class => 'btn-blue' %>
+</div>
+<% if @states.blank? %>
+    <div class="error_msg">
+      OOPS!.. No States are Found in the System..!
+    </div>
+<% else %>
+    <table width="100%">
+      <tr>
+        <td align="right">
+          <b><i>per page</i></b>
+          <%= per_page %>| <%= page_entries_info @states %>
+        </td>
+      </tr>
+    </table>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Status?</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @states.each do |state| %>
+          <tr>
+            <td><%= i %></td>
+            <td>
+              <div id="status_<%= state.id %>">
+                <%= link_to state.status? ? image_tag('tick.gif') : image_tag('cross.gif'), approve_state_path(state), :remote => true %>
+              </div>
+            </td>
+            <td><%= highlight(state.name.titleize,params[:search]) %></td>
+            <td>
+              <%= link_for_show_pop(state) %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="flickr_pagination">
+      <%= page_entries_info @states %> <%= will_paginate @states, :container => false %>
+    </div>
+
+<% end %>
+
+
+

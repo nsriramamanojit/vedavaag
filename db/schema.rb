@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403100807) do
+ActiveRecord::Schema.define(:version => 20130317094251) do
 
   create_table "accounts", :force => true do |t|
     t.string   "account_number",                   :null => false
@@ -50,13 +50,24 @@ ActiveRecord::Schema.define(:version => 20120403100807) do
     t.datetime "updated_at"
   end
 
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.string   "reference_name"
+    t.string   "description"
+    t.boolean  "status",         :default => false
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "transactions", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.text     "remarks"
     t.decimal  "request_amount",          :precision => 10, :scale => 2
     t.date     "transaction_date"
-    t.string   "transaction_id"
+    t.string   "transaction_number"
     t.date     "approve_date"
     t.string   "approve_id"
     t.string   "approve_remarks"
@@ -89,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20120403100807) do
     t.string   "name"
     t.string   "mobile_number"
     t.string   "phone_number"
+    t.integer  "state_id"
+    t.integer  "project_id"
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token",                   :null => false

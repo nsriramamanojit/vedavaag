@@ -13,6 +13,44 @@
           <th width="20%">Description</th>
           <td><%= @transaction.description %></td>
         </tr>
+        <tr>
+          <th width="20%">Request Amount</th>
+          <td><%= number_with_precision(@transaction.request_amount, :precision => 2) %></td>
+        </tr>
+        <tr>
+          <th width="20%">Request Date</th>
+          <td><%= @transaction.transaction_date? ? @transaction.transaction_date.strftime("%d-%m-%y") : "N.A" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Approve Status</th>
+          <td><%= @transaction.approve_status? ? "Approved" :"Pending" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Approve Date</th>
+          <td><%= @transaction.approve_date? ? @transaction.approve_date.strftime("%d-%m-%y") : "N.A" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Payment Status</th>
+          <td><%= @transaction.fund_status? ? "Approved" : "Pending" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Payment Date</th>
+          <td><%= @transaction.payment_date? ? @transaction.payment_date.strftime("%d-%m-%y") : "N.A" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Remarks</th>
+          <td><%= @transaction.remarks? ? @transaction.remarks : "--" %></td>
+        </tr>
+        <tr>
+          <th width="20%">Attachment</th>
+          <td>
+            <% if @transaction.attachment.file? %>
+            <%= link_to "Download", @transaction.attachment.url %>
+            <% else %>
+            N.A
+            <% end %>
+          </td>
+        </tr>
       </table>
     </div>
   </div>

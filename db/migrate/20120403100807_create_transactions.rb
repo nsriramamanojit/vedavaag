@@ -7,7 +7,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.decimal :request_amount, :precision => 10, :scale => 2
 
       t.date :transaction_date
-      t.string :transaction_id
+      t.string :transaction_number
 
       t.date :approve_date
       t.string :approve_id

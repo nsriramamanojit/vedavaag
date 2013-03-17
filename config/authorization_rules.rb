@@ -21,7 +21,6 @@ authorization do
   role :employee do
     has_permission_on [:transactions], :to=>[:index,:new,:create,:show,:edit,:approve,:approve_pay]
     has_permission_on [:users], :to=>[:profile,:profile_update,:update_profile,:change_password,:password_change]
-
   end
 
 end

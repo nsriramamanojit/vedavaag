@@ -1,5 +1,9 @@
 Vedavaag::Application.routes.draw do
 
+  resources :states do
+    get :approve, :on=>:member
+  end
+
  resources :generals
 
   resources :transactions do

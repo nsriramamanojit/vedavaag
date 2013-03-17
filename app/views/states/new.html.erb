@@ -1,0 +1,11 @@
+<% title "Vedavaag | States " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Vedavaag | States','Create State') %>
+<% end %>
+<div class="help_text_caution">
+  FURTHER MODIFICATION WILL NOT POSSIBLE AFTER SUBMITTING THE FORM.
+</div>
+<%= render 'form',:heading => 'Create New State' %>
+<div class="link_buttons">
+  <%=link_to_all(states_path)%>
+</div>

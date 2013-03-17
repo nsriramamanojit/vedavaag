@@ -40,6 +40,8 @@
         <% if has_any_role? :sa, :admin, :manager %>
             <th>Request By</th>
         <% end %>
+        <th>Pay Date</th>
+
         <th>Actions</th>
       </tr>
       </thead>
@@ -63,14 +65,16 @@
                   <%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %>
               <% end %>
             </td>
-            <td><%= transaction.transaction_date? ? transaction.transaction_date.strftime("%d-%m-%Y") : "N.A" %></td>
+            <td><%= transaction.transaction_date? ? transaction.transaction_date.strftime("%d-%m-%y") : "N.A" %></td>
             <td><%= truncate(transaction.name, :length => 10) %></td>
             <td><%= truncate(transaction.description, :length => 10) %></td>
-            <td><%= transaction.request_amount %></td>
+            <td align="right"><%= number_with_precision(transaction.request_amount, :precision => 2) %></td>
             <td><%= transaction.remarks? ? (link_to "View", "#", :class => "tipTipRight", :title => transaction.remarks) : "N.A" %></td>
             <% if has_any_role? :sa, :admin, :manager %>
                 <td><%= get_user(transaction) %></td>
             <% end %>
+            <td><%= transaction.payment_date? ? transaction.payment_date.strftime("%d-%m-%y") : "N.A" %></td>
+
             <td>
               <%= link_for_show_pop(transaction) %>
             </td>

@@ -9,10 +9,10 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: csc-v2_development
+  database: vedavaag_development
   pool: 5
   username: root
-  password: root123
+  password: roor123
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -22,18 +22,18 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: csc-v2_test
+  database: csc_test
   pool: 5
   username: root
-  password: root123
+  password:
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: csc-v2_production
+  database: csc_production
   pool: 5
   username: root
-  password: root123
+  password:
   socket: /var/run/mysqld/mysqld.sock

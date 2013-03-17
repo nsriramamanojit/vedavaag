@@ -68,7 +68,7 @@ module ApplicationHelper
     roles = Role.where(:id=>user.roles)
     content = ""
     for role in roles
-      content << role.name.titleize
+      content << role.name
       content <<  "<br/>"
     end
     content.html_safe

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   #Relations
   has_many :assignments
   has_many :roles, :through => :assignments
+  belongs_to :state
 
   #Roles
   def role_symbols

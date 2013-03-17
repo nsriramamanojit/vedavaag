@@ -34,6 +34,8 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(params[:transaction])
     @transaction.transaction_date= Time.now
     @transaction.requested_by =current_user.id
+    @transaction.transaction_number = 'REQ/' + '%03d' % current_user.id.to_s + '/' + Time.now.strftime('%y%m%d%H%M%S').to_s
+
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to(transactions_path, :notice => 'Request was successfully created.') }
@@ -73,6 +75,8 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     @transaction.update_attribute('approve_status', @transaction.approve_status ? false : true)
     @transaction.update_attribute('approved_by',current_user .id)
+    @transaction.update_attribute('approve_date',Time.now)
+
     respond_to do |format|
       format.js
     end
@@ -81,6 +85,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     @transaction.update_attribute('fund_status', @transaction.fund_status ? false : true)
     @transaction.update_attribute('payment_by',current_user .id)
+    @transaction.update_attribute('payment_date',Time.now)
 
     respond_to do |format|
       format.js
