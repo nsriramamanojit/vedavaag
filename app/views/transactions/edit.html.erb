@@ -1,6 +1,11 @@
-<h1>Editing transaction</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @transaction %> |
-<%= link_to 'Back', transactions_path %>
+<% title "VEDAVAAG | Requests " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('VEDAVAAG | Requests','Update Request') %>
+<% end %>
+<div class="help_text">
+  Area for Update Requests
+</div>
+<%= render 'edit_form' %>
+<div class="link_buttons">
+  <%=link_to_all(transactions_path)%>
+</div>

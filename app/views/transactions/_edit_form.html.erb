@@ -1,0 +1,18 @@
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= simple_form_for(@transaction, :validate => true,:html => {:multipart => true }) do |f| %>
+      <fieldset>
+        <%= f.input :name,:label=>"Request Name",:placeholder=>"Request Name",:disabled=>true %>
+        <%= f.input :description,:label=>"Request Description",:placeholder=>"Description of Request",:disabled=>true %>
+        <%= f.input :request_amount,:label=>"Request Amount",:placeholder=>"Amount", :disabled=>true%>
+        <%= f.input :remarks, :label=>"Remarks",:input_html => { :cols => 50, :rows => 3 },:disabled=>true %>
+        <%= f.input :paid_amount,:label=>"Amount Approved",:placeholder=>"Amount Approved"%>
+        <%= f.input :payment_remarks, :label=>"Remarks" %>
+
+        <%= f.submit 'Save', :disable_with=>'Please wait...' %>
+      </fieldset>
+  <% end %>
+</div>

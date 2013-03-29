@@ -1,0 +1,62 @@
+<% title "Vedavaag | Projects" %>
+<h3>Vedavaag | Projects | Manage Projects</h3>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing Projects. <br/>
+  Along with creating, managing Projects for Application.
+</div>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'New Project'), new_project_path, :class => 'btn-blue' %>
+</div>
+<% if @projects.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Projects are Found in the System..!
+    </div>
+<% else %>
+    <table width="100%">
+      <tr>
+        <td align="right">
+          <b><i>per page</i></b>
+          <%= per_page %>| <%= page_entries_info @projects %>
+        </td>
+      </tr>
+    </table>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Status?</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @projects.each do |project| %>
+          <tr>
+            <td><%= i %></td>
+            <td>
+              <div id="status_<%= project.id %>">
+                <%= link_to project.status? ? image_tag('tick.gif') : image_tag('cross.gif'), approve_project_path(project), :remote => true %>
+              </div>
+            </td>
+            <td><%= highlight(project.name,params[:search]) %></td>
+            <td>
+              <%= link_for_show_pop(project) %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="flickr_pagination">
+      <%= page_entries_info @projects %> <%= will_paginate @projects, :container => false %>
+    </div>
+
+<% end %>
+
+
+

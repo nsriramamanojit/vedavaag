@@ -27,6 +27,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.integer :attachment_file_size
       t.datetime :attachment_updated_at
 
+      t.string  :old_transaction_number
       t.integer :requested_by
       t.integer :approved_by
       t.integer :payment_by

@@ -1,17 +1,17 @@
 <div class="recent_items">
   <div class="margin">
-    <h3>Recent States</h3>
+    <h3>Recent Projects</h3>
     <% if @recent.blank? %>
-        No States Added Yet...
+        No Projects Added Yet...
     <% else %>
-        <% for state in @recent %>
+        <% for project in @recent %>
             <div id="margin">
               <div class="left">&nbsp;</div>
               <div class="right">&nbsp;</div>
               <div class="left-to-right">
                 <div class="pen">&nbsp;</div>
                 <div class="text">
-                  <%= link_to state.name, state_path(state), :class=>'usuallink tipTipRight',:rel=>"facebox",:title => "View Details" %>
+                  <%= link_to project.name, project_path(project), :class=>'usuallink tipTipRight',:rel=>"facebox",:title => "View Details" %>
                   <div style="margin: 8px 0px;">&nbsp;</div>
                 </div>
               </div>
@@ -19,8 +19,8 @@
         <% end %>
     <% end %>
     <div class="see_all">
-      <a href="<%= states_path %>">
-        View all States
+      <a href="<%= projects_path %>">
+        View all Projects
         <img hspace="2" border="0" alt="" src="/images/blue^.gif">
       </a>
     </div>

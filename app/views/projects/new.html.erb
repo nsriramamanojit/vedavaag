@@ -1,0 +1,11 @@
+<% title "Vedavaag | Projects " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Vedavaag | Projects','Create Project') %>
+<% end %>
+<div class="help_text_caution">
+  FURTHER MODIFICATION WILL NOT POSSIBLE AFTER SUBMITTING THE FORM.
+</div>
+<%= render 'form',:heading => 'Create New Project' %>
+<div class="link_buttons">
+  <%=link_to_all(projects_path)%>
+</div>

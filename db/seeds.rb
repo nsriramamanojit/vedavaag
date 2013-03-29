@@ -38,4 +38,14 @@ State.create(:name => "Andhra Pradesh", :description => "AP", :created_at => Tim
 State.create(:name => "Bihar", :description => "Bihar", :created_at => Time.now, :created_by => 1,:status=>1)
 State.create(:name => "Uttar Pradesh", :description => "UP", :created_at => Time.now, :created_by => 1,:status=>1)
 
+######### Projects #################
+Project.create(:name => "Vedavaag", :description => "Vedavaag", :created_at => Time.now, :created_by => 1,:status=>1)
+Project.create(:name => "SECC-UP", :description => "SECC UP", :created_at => Time.now, :created_by => 1,:status=>1)
+Project.create(:name => "SECC-BIHAR", :description => "SECC BIHAR", :created_at => Time.now, :created_by => 1,:status=>1)
+Project.create(:name => "NPR40-ITI", :description => "NPR40 ITI", :created_at => Time.now, :created_by => 1,:status=>1)
+Project.create(:name => "NPR40-BEL", :description => "NPR40 BEL", :created_at => Time.now, :created_by => 1,:status=>1)
+Project.create(:name => "NPR40-ECIL", :description => "NPR40 ECIL", :created_at => Time.now, :created_by => 1,:status=>1)
+
+
+
 

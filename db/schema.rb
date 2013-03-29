@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317094251) do
+ActiveRecord::Schema.define(:version => 20130329101832) do
 
   create_table "accounts", :force => true do |t|
     t.string   "account_number",                   :null => false
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(:version => 20130317094251) do
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "reference_name"
+    t.string   "description"
+    t.boolean  "status",         :default => false
     t.integer  "created_by"
     t.integer  "updated_by"
     t.datetime "created_at"
@@ -82,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20130317094251) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.string   "old_transaction_number"
     t.integer  "requested_by"
     t.integer  "approved_by"
     t.integer  "payment_by"

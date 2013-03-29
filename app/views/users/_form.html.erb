@@ -12,6 +12,7 @@
         <%= f.input :phone_number, :label=>"Land Phone",:placeholder=>"Phone Number" %>
         <%= f.association :roles,:label_method => lambda { |role| "#{role.name} " } %>
         <%= f.association :state, :prompt=>"Select State" %>
+        <%= f.association :project, :prompt=>"Select Project" %>
         <%= f.submit 'Save', :disable_with=>'Please wait...' %>
       </fieldset>
   <% end %>

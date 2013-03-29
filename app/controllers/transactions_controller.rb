@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   before_filter :recent_items, :require_user
   filter_access_to :all
-  layout "application", :except => [:show, :edit]
+  layout "application", :except => [:show]
 
   def index
     @transactions = Transaction.search(params[:search]).paginate(:page => page, :per_page => per_page) if has_any_role? :sa,:admin, :manager
@@ -50,9 +50,23 @@ class TransactionsController < ApplicationController
   def update
     @transaction = Transaction.find(params[:id])
 
+    @transaction.payment_date= Time.now
+    @transaction.payment_id =current_user.id
+    @transaction.fund_status = true
+
+
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])
-        format.html { redirect_to(@transaction, :notice => 'Transaction was successfully updated.') }
+
+        if @transaction.request_amount.to_f > params[:transaction][:paid_amount].to_f
+          new_request_amount = @transaction.request_amount.to_f - params[:transaction][:paid_amount].to_f
+          @new_request = Transaction.new(:request_amount=>new_request_amount,:transaction_date=>Time.now,:name=>@transaction.name,:description=>@transaction.description)
+          @new_request.save
+        else
+          puts "NO"
+        end
+
+        format.html { redirect_to(transactions_path, :notice => 'Request was successfully updated.') }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -91,6 +105,7 @@ class TransactionsController < ApplicationController
       format.js
     end
   end
+
 
   ########################################################
   private

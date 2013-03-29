@@ -15,7 +15,6 @@ class Transaction < ActiveRecord::Base
   #validations
   validates :name,:request_amount,:description,:presence => true
 
-
   #Recent and Search
   class << self
     def recent

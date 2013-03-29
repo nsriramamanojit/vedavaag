@@ -10,7 +10,7 @@
   Along with creating, managing Requests.<br/>
 </div>
 <div class="link_buttons">
-  <%= link_to content_tag(:span, 'New Request'), new_transaction_path, :class => 'btn-blue' if has_role? :employee%>
+  <%= link_to content_tag(:span, 'New Request'), new_transaction_path, :class => 'btn-blue' if has_role? :employee %>
 </div>
 
 <% if @transactions.blank? %>
@@ -32,6 +32,7 @@
         <th>#</th>
         <th>Approve</th>
         <th>Payment</th>
+        <th>Reference</th>
         <th>Date</th>
         <th>Name</th>
         <th>Description</th>
@@ -65,6 +66,7 @@
                   <%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %>
               <% end %>
             </td>
+            <td><%= transaction.transaction_number %></td>
             <td><%= transaction.transaction_date? ? transaction.transaction_date.strftime("%d-%m-%y") : "N.A" %></td>
             <td><%= truncate(transaction.name, :length => 10) %></td>
             <td><%= truncate(transaction.description, :length => 10) %></td>
@@ -77,6 +79,9 @@
 
             <td>
               <%= link_for_show_pop(transaction) %>
+
+              <%= link_for_edit(transaction) if has_role?(:manager) %>
+
             </td>
           </tr>
           <% i = i + 1 %>
