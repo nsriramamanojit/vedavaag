@@ -34,10 +34,13 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(params[:transaction])
     @transaction.transaction_date= Time.now
     @transaction.requested_by =current_user.id
-    @transaction.transaction_number = 'REQ/' + '%03d' % current_user.id.to_s + '/' + Time.now.strftime('%y%m%d%H%M%S').to_s
+    @transaction.transaction_number = current_user.project.name.upcase+ '/' + '%03d' % current_user.id.to_s + '/' + Time.now.strftime('%m%d%H%M%S').to_s
 
     respond_to do |format|
       if @transaction.save
+
+        UserMailer.request_mail(@transaction,current_user).deliver
+
         format.html { redirect_to(transactions_path, :notice => 'Request was successfully created.') }
         format.xml { render :xml => @transaction, :status => :created, :location => @transaction }
       else

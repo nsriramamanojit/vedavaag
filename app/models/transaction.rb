@@ -22,7 +22,7 @@ class Transaction < ActiveRecord::Base
     end
     def search(query)
       if query
-        where({:name.matches => "%#{query}%"}) #from meta_where gem
+        where({:transaction_number.matches => "%#{query}%"}) #from meta_where gem
       else
         scoped
       end

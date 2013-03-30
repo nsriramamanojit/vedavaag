@@ -11,6 +11,7 @@
 </div>
 <div class="link_buttons">
   <%= link_to content_tag(:span, 'New Request'), new_transaction_path, :class => 'btn-blue' if has_role? :employee %>
+  <%= link_to content_tag(:span, 'All Requests'), transactions_path, :class => 'btn-yellow' %>
 </div>
 
 <% if @transactions.blank? %>
@@ -59,14 +60,14 @@
               <% end %>
             </td>
             <td>
-              <% if has_any_role? :sa, :employee, :admin %>
+              <% if has_any_role? :sa, :employee, :admin, :manager %>
                   <%= transaction.fund_status ? image_tag('tick.gif') : image_tag('cross.gif') %>
 
               <% else %>
-                  <%= link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %>
+                  <%# link_to_active_pay(transaction, approve_pay_transaction_path(transaction)) %>
               <% end %>
             </td>
-            <td><%= transaction.transaction_number %></td>
+            <td><%= highlight(transaction.transaction_number, params[:search]) %></td>
             <td><%= transaction.transaction_date? ? transaction.transaction_date.strftime("%d-%m-%y") : "N.A" %></td>
             <td><%= truncate(transaction.name, :length => 10) %></td>
             <td><%= truncate(transaction.description, :length => 10) %></td>
@@ -79,9 +80,10 @@
 
             <td>
               <%= link_for_show_pop(transaction) %>
-
-              <%= link_for_edit(transaction) if has_role?(:manager) %>
-
+              <% if transaction.fund_status? %>
+              <% else %>
+                  <%= link_for_edit(edit_transaction_path(transaction)) if has_role?(:manager) %>
+              <% end %>
             </td>
           </tr>
           <% i = i + 1 %>

@@ -9,8 +9,8 @@
         <%= f.input :description,:label=>"Request Description",:placeholder=>"Description of Request",:disabled=>true %>
         <%= f.input :request_amount,:label=>"Request Amount",:placeholder=>"Amount", :disabled=>true%>
         <%= f.input :remarks, :label=>"Remarks",:input_html => { :cols => 50, :rows => 3 },:disabled=>true %>
-        <%= f.input :paid_amount,:label=>"Amount Approved",:placeholder=>"Amount Approved"%>
-        <%= f.input :payment_remarks, :label=>"Remarks" %>
+        <%= f.input :paid_amount,:label=>"Amount Approved",:placeholder=>"Amount Approved",:required=>true%>
+        <%= f.input :payment_remarks, :label=>"Remarks" ,:required=>true%>
 
         <%= f.submit 'Save', :disable_with=>'Please wait...' %>
       </fieldset>
