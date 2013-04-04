@@ -5,8 +5,9 @@ ActionMailer::Base.smtp_settings = {
     :user_name            => "chaitanya@vedavaag.com",
     :password             => "vedavaag14779@#",
     :authentication       => :plain,
-    :enable_starttls_auto => false
+    :enable_starttls_auto => true
 
 }
-
 ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.raise_delivery_errors = true

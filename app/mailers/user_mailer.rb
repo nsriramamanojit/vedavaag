@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+
   default :from => "no-reply@vedavaag.com"
 
   def welcome_email(user)

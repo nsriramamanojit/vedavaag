@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
 
-        UserMailer.request_mail(@transaction,current_user).deliver
+        #UserMailer.request_mail(@transaction,current_user).deliver
 
         format.html { redirect_to(transactions_path, :notice => 'Request was successfully created.') }
         format.xml { render :xml => @transaction, :status => :created, :location => @transaction }
